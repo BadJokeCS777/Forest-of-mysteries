@@ -15,12 +15,10 @@ namespace ForestOfMysteries.Common
             action?.Invoke();
         }
 
-        public static void
-            WaitUntil(this MonoBehaviour monoBehaviour, Func<bool> predicate, Action onComplete = null) =>
+        public static void WaitUntil(this MonoBehaviour monoBehaviour, Func<bool> predicate, Action onComplete = null) =>
             monoBehaviour.StartCoroutine(WaitUntil(predicate, onComplete));
 
-        public static void
-            WaitWhile(this MonoBehaviour monoBehaviour, Func<bool> predicate, Action onComplete = null) =>
+        public static void WaitWhile(this MonoBehaviour monoBehaviour, Func<bool> predicate, Action onComplete = null) =>
             monoBehaviour.StartCoroutine(WaitWhile(predicate, onComplete));
 
         private static IEnumerator WaitUntil(Func<bool> predicate, Action onComplete)

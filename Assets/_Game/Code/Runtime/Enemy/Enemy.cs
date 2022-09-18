@@ -1,3 +1,4 @@
+using ForestOfMysteries.Common;
 using UnityEngine;
 
 namespace ForestOfMysteries.Enemy
@@ -16,17 +17,18 @@ namespace ForestOfMysteries.Enemy
         public void Scare()
         {
             Show();
-
+            
             transform.position = CalculatePositionAtTargetFromAngle(_target, -_angle);
             Vector3 position = CalculatePositionAtTargetFromAngle(_target, _angle);
             _navigator.Move(position, onComplete: Stop);
+            
             _animator.Move = true;
         }
 
         private Vector3 CalculatePositionAtTargetFromAngle(Transform target, float angle)
         {
             Quaternion quaternion = Quaternion.Euler(0,angle,0);
-            return quaternion * target.forward * _distance;
+            return quaternion * (target.forward * _distance);
         }
 
         private void Stop()

@@ -12,7 +12,11 @@ namespace ForestOfMysteries.Enemy
         public void Move(Vector3 destination, Action onComplete = null)
         {
             _navMeshAgent.SetDestination(destination);
-            this.InvokeAfterDelay(() => this.WaitWhile(PathIsComplete, onComplete), 1f);
+
+            this.InvokeAfterDelay(WaitCompletePath, 1f);
+            
+            void WaitCompletePath() => 
+                this.WaitWhile(PathIsComplete, onComplete);
         }
         
 
